@@ -1,0 +1,803 @@
+<!doctype html>
+<html prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="utf-8">
+  <title>巴利字典</title>
+  <meta name="description" content="巴利-英文,中文,日文,越南文,緬甸文 字典"/>
+  <meta name="keywords" content="巴利字典"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+  <meta property="og:image" content="https://dictionary.online-dhamma.net/dhamma-wheel.png" />
+
+
+  <link rel="icon" type="image/png" href="https://dictionary.online-dhamma.net/dhamma-wheel.png">
+  <link rel="apple-touch-icon" href="https://dictionary.online-dhamma.net/dhamma-wheel.png">
+  <link rel="manifest" href="https://dictionary.online-dhamma.net/manifest.json">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css" integrity="sha256-oSsWW/ca1ll8OVu2t4EKkyb9lmH0Pkd8CXKXnYP4QvA=" crossorigin="anonymous">
+  
+<style>
+ 
+.is-gold { color: #c09853; }
+span.is-gold { color: #c09853; }
+.has-background-light-gold { background-color: #fcf8e3; }
+.has-border-gold { border: 1px solid #fbeed5; }
+
+ 
+.is-blue { color: #3a87ad; }
+.has-background-light-blue { background-color: #d9edf7; }
+.has-border-light-blue { border-color: #bce8f1; }
+
+#keypad {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #F0F8FF;
+}
+
+@media screen and (max-width: 570px) {
+  #keypad div {
+    display: inline;
+  }
+}
+</style>
+
+</head>
+<body>
+  
+<style>
+@media screen and (max-width: 1023px) {
+   
+  #menu-toggle:checked ~ #paliNavbarMenu { display: block; }
+
+   
+  #menu-toggle:checked + .navbar-brand > .navbar-burger span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+  #menu-toggle:checked + .navbar-brand > .navbar-burger span:nth-child(2) { opacity: 0; }
+  #menu-toggle:checked + .navbar-brand > .navbar-burger span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+   
+
+   
+}
+
+label[for="setting-toggle"]:hover {
+  cursor: pointer;
+  background-color: #fafafa;
+  color: #3273dc;
+}
+#setting-toggle:not(:checked) ~ article.setting-menu { display: none; }
+#setting-toggle:not(:checked) + .navbar > .navbar-menu > .navbar-start > label span:nth-child(1) { display: none; }
+#setting-toggle:checked + .navbar > .navbar-menu > .navbar-start > label span:nth-child(2) { display: none; }
+</style>
+
+<input type="checkbox" id="setting-toggle" class="is-hidden">
+<nav class="navbar has-background-light-gold has-border-gold" role="navigation" aria-label="main navigation">
+  <input type="checkbox" id="menu-toggle" class="is-hidden">
+  <div class="navbar-brand">
+    <a class="navbar-item is-size-4 is-gold" href="https://dictionary.online-dhamma.net/">
+      <span data-default-string="Pāli Dictionary">巴利字典</span>
+    </a>
+
+    <label for="menu-toggle" class="navbar-burger burger">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </label>
+  </div>
+
+  <div id="paliNavbarMenu" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="http://tipitaka.online-dhamma.net" target="_blank">
+        <span data-default-string="Canon">經典</span>
+      </a>
+
+      <a class="navbar-item" href="https://dictionary.online-dhamma.net/about/">
+        <span data-default-string="About">關於</span>
+      </a>
+
+      <label class="navbar-item" for="setting-toggle">
+        <span>&#9660;</span><span>&#9658;</span><span data-default-string="Setting">設定</span>
+      </label>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          <span data-default-string="Language">Language</span>
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item lang-select" href="https://dictionary.online-dhamma.net/en_US/">
+            English
+          </a>
+          <a class="navbar-item lang-select" href="https://dictionary.online-dhamma.net/zh_TW/">
+            傳統中文
+          </a>
+          <a class="navbar-item lang-select" href="https://dictionary.online-dhamma.net/vi_VN/">
+            Tiếng Việt
+          </a>
+          <a class="navbar-item lang-select" href="https://dictionary.online-dhamma.net/fr_FR/">
+            Français
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  
+<article class="message is-info setting-menu">
+<div class="message-body">
+  <input type="checkbox" id="isShowWordPreview"/>
+    <span data-default-string="Input Word Explanation Preview">預覽輸入單字解釋</span>
+    <br />
+<br />
+<div>
+  <span data-default-string="What Languages of Dictionaries to Show?">顯示哪種語言的字典?</span>
+    <br />
+  <input type="checkbox" checked="checked" id="p2en"/>
+    <span data-default-string='Pāli-English'>巴利-英文</span>
+    <br />
+  <input type="checkbox" checked="checked" id="p2ja"/>
+    <span data-default-string='Pāli-Japanese'>巴利-日文</span>
+    <br />
+  <input type="checkbox" checked="checked" id="p2zh"/>
+    <span data-default-string='Pāli-Chinese'>巴利-中文</span>
+    <br />
+  <input type="checkbox" checked="checked" id="p2vi"/>
+    <span data-default-string='Pāli-Vietnamese'>巴利-越南文</span>
+    <br />
+  <input type="checkbox" checked="checked" id="p2my"/>
+    <span data-default-string='Pāli-Burmese'>巴利-緬甸文</span>
+    <br />
+</div>
+<br />
+  <span data-default-string='The Order of Languages of Dictionaries to Show?'>顯示字典語言順序?</span>
+    <br />
+  <select id="dicLangOrder">
+    <option value="hdr" selected="selected" data-default-string='According to Language Settings in Browser'>根據瀏覽器語言設定</option>
+    <option value="en" data-default-string='English First'>英文優先</option>
+    <option value="ja" data-default-string='Japanese First'>日文優先</option>
+    <option value="zh" data-default-string='Chinese First'>中文優先</option>
+    <option value="vi" data-default-string='Vietnamese First'>越南文優先</option>
+    <option value="my" data-default-string='Burmese First'>緬甸文優先</option>
+  </select>
+</div>
+</article>
+
+
+  
+  <div id="website-loading" class="notification is-info">載入中...</div>
+
+  
+  <section class="section is-medium py-4 is-hidden">
+    <div class="container">
+
+
+<div class="columns">
+  <div class="column is-hidden-mobile">
+    
+  </div>
+  <div class="column is-two-thirds">
+    
+
+
+
+<div class="pali-type-hint-table columns is-centered is-hidden">
+  <div class="column is-narrow">
+    
+
+
+<div class="table-container">
+<table class="table is-bordered is-narrow">
+<tbody>
+  <tr>
+    <th>Type</th>
+    <td>aa</td>
+    <td>ii</td>
+    <td>uu</td>
+    <td>"n</td>
+    <td>.m</td>
+    <td>~n</td>
+    <td>.t</td>
+    <td>.d</td>
+    <td>.n</td>
+    <td>.l</td>
+  </tr>
+  <tr>
+    <th>For</th>
+    <td>ā</td>
+    <td>ī</td>
+    <td>ū</td>
+    <td>ṅ</td>
+    <td>ṃ</td>
+    <td>ñ</td>
+    <td>ṭ</td>
+    <td>ḍ</td>
+    <td>ṇ</td>
+    <td>ḷ</td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+  </div>
+</div>
+
+<div id="keypad" class="is-hidden"></div>
+
+<button class="button is-rounded is-info is-light is-small my-1" id="toggle-keypad"><span>Show Keypad</span><span class="is-hidden">Hide Keypad</span></button>
+<button class="button is-rounded is-info is-light is-small my-1" id="toggle-type-hint"><span>Show Pāli Type Hint on Top</span><span class="is-hidden">Hide Pāli Type Hint on Top</span></button>
+
+<div class="notification is-info is-light py-0 px-2 is-size-6 mb-1">Thai: <span id="r2t" class="is-size-5"></span> (<a href="https://github.com/siongui/pali-transliteration">report bug</a> if wrong)</div>
+
+<div class="field">
+  <div class="control">
+    <input id="word" class="input" type="text"
+           autofocus="autofocus" tabindex="1" autocomplete="off"
+           placeholder="Input Pāli Word">
+    
+<style>
+ 
+#word ~ div.suggest-is-absolute {
+  position: absolute;
+}
+
+ 
+.suggestedWordPreview {
+  border-top-color: #C9D7F1;
+  border-right-color: #36C;
+  border-bottom-color: #36C;
+  border-left-color: #A2BAE7;
+  border-style: solid;
+  border-width: 1px;
+  z-index: 10;
+  padding: 0;
+  background-color: white;
+  overflow: hidden;
+  position: absolute;
+  text-align: left;
+  font-size: large;
+  border-radius: 4px;
+  margin-top: 1px;
+  line-height: 1.25em;
+
+
+   
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.previewWordName {
+  color: GoldenRod;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin: .5em;
+}
+
+div.shortDicExp:hover {
+  font-size: 1.5em;
+  line-height: 1em;
+  background-color: #F0F8FF;
+  border: 1px dotted aqua;
+}
+
+div.shortDicExp > span:first-child {
+  color: red;
+}
+</style>
+<div class="suggestedWordPreview is-hidden"></div>
+
+  </div>
+</div>
+
+<div id="looking-up" class="notification is-info is-hidden"><span data-default-string="Looking Up ...">Looking Up ...</span></div>
+
+<div id="main-content" class="content is-large"></div>
+
+
+<div class="columns is-centered">
+  <div class="column is-narrow">
+    
+
+
+<div class="table-container">
+<table class="table is-bordered is-narrow">
+<tbody>
+  <tr>
+    <th>Type</th>
+    <td>aa</td>
+    <td>ii</td>
+    <td>uu</td>
+    <td>"n</td>
+    <td>.m</td>
+    <td>~n</td>
+    <td>.t</td>
+    <td>.d</td>
+    <td>.n</td>
+    <td>.l</td>
+  </tr>
+  <tr>
+    <th>For</th>
+    <td>ā</td>
+    <td>ī</td>
+    <td>ū</td>
+    <td>ṅ</td>
+    <td>ṃ</td>
+    <td>ñ</td>
+    <td>ṭ</td>
+    <td>ḍ</td>
+    <td>ṇ</td>
+    <td>ḷ</td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+  </div>
+</div>
+<div class="columns is-centered">
+  <div class="column is-narrow notification is-info is-light">
+    <span data-default-string="Press TAB to focus on input">Press TAB to focus on input</span>
+  </div>
+</div>
+
+
+<style>
+#prefixList a {
+  text-decoration: none;
+}
+</style>
+<article class="message is-link">
+  <div class="message-header">
+    <p data-default-string="Browse Dictionary">瀏覽字典</p>
+  </div>
+  <div class="message-body">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+      <ul id="prefixList">
+      </ul>
+    </nav>
+  </div>
+</article>
+
+
+
+<script async src="https://cse.google.com/cse.js?cx=000759460633137666077:n45laoetopi"></script>
+<div class="gcse-search"></div>
+
+
+
+<footer>
+
+<div class="content is-small">
+  <span class="tag is-link is-light">
+    <span data-default-string="Share to">Share to</span>
+  </span>
+  
+
+
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdictionary.sutta.org%2F" target="_blank" rel="noopener" aria-label="Facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--circle">
+    </div>Facebook</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=P%C4%81li%20to%20English%2C%20Chinese%2C%20Japanese%2C%20Vietnamese%2C%20Burmese%20Dictionary&amp;url=https%3A%2F%2Fdictionary.sutta.org%2F" target="_blank" rel="noopener" aria-label="Twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--circle">
+    </div>Twitter</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=P%C4%81li%20to%20English%2C%20Chinese%2C%20Japanese%2C%20Vietnamese%2C%20Burmese%20Dictionary&amp;caption=P%C4%81li%20to%20English%2C%20Chinese%2C%20Japanese%2C%20Vietnamese%2C%20Burmese%20Dictionary&amp;content=https%3A%2F%2Fdictionary.sutta.org%2F&amp;canonicalUrl=https%3A%2F%2Fdictionary.sutta.org%2F&amp;shareSource=tumblr_share_button" target="_blank" rel="noopener" aria-label="Tumblr">
+  <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--circle">
+    </div>Tumblr</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=P%C4%81li%20to%20English%2C%20Chinese%2C%20Japanese%2C%20Vietnamese%2C%20Burmese%20Dictionary&amp;body=https%3A%2F%2Fdictionary.sutta.org%2F" target="_self" rel="noopener" aria-label="E-Mail">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--circle">
+    </div>E-Mail</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fdictionary.sutta.org%2F&amp;media=https%3A%2F%2Fdictionary.sutta.org%2F&amp;description=P%C4%81li%20to%20English%2C%20Chinese%2C%20Japanese%2C%20Vietnamese%2C%20Burmese%20Dictionary" target="_blank" rel="noopener" aria-label="Pinterest">
+  <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--circle">
+      </div>Pinterest</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3A%2F%2Fdictionary.sutta.org%2F&amp;resubmit=true&amp;title=P%C4%81li%20to%20English%2C%20Chinese%2C%20Japanese%2C%20Vietnamese%2C%20Burmese%20Dictionary" target="_blank" rel="noopener" aria-label="Reddit">
+  <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--circle">
+      </div>Reddit</div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdictionary.sutta.org%2F&amp;t=P%C4%81li%20to%20English%2C%20Chinese%2C%20Japanese%2C%20Vietnamese%2C%20Burmese%20Dictionary" target="_blank" rel="noopener" aria-label="Hacker News">
+  <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--circle">
+    </div>Hacker News</div>
+</a>
+
+<style>
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff;
+  margin: 0.5em
+}
+
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif
+}
+
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: top
+}
+
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+ 
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+ 
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c
+}
+
+.resp-sharing-button--pinterest:hover {
+  background-color: #8c0615
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C
+}
+
+.resp-sharing-button--tumblr:hover {
+  background-color: #222d3c
+}
+
+.resp-sharing-button--reddit {
+  background-color: #5f99cf
+}
+
+.resp-sharing-button--reddit:hover {
+  background-color: #3a80c1
+}
+
+.resp-sharing-button--google {
+  background-color: #dd4b39
+}
+
+.resp-sharing-button--google:hover {
+  background-color: #c23321
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5
+}
+
+.resp-sharing-button--linkedin:hover {
+  background-color: #046293
+}
+
+.resp-sharing-button--email {
+  background-color: #777
+}
+
+.resp-sharing-button--email:hover {
+  background-color: #5e5e5e
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576
+}
+
+.resp-sharing-button--xing:hover {
+  background-color: #114c4c
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+
+.resp-sharing-button--hackernews {
+background-color: #FF6600
+}
+.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
+
+.resp-sharing-button--vk {
+  background-color: #507299
+}
+
+.resp-sharing-button--vk:hover {
+  background-color: #43648c
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C;
+  border-color: #35465C;
+}
+
+.resp-sharing-button--tumblr:hover,
+.resp-sharing-button--tumblr:active {
+  background-color: #222d3c;
+  border-color: #222d3c;
+}
+
+.resp-sharing-button--email {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.resp-sharing-button--email:hover,
+.resp-sharing-button--email:active {
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c;
+  border-color: #bd081c;
+}
+
+.resp-sharing-button--pinterest:hover,
+.resp-sharing-button--pinterest:active {
+  background-color: #8c0615;
+  border-color: #8c0615;
+}
+
+.resp-sharing-button--reddit {
+  background-color: #5f99cf;
+  border-color: #5f99cf;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #3a80c1;
+  border-color: #3a80c1;
+}
+
+.resp-sharing-button--hackernews {
+  background-color: #FF6600;
+  border-color: #FF6600;
+}
+
+.resp-sharing-button--hackernews:hover
+.resp-sharing-button--hackernews:active {
+  background-color: #FB6200;
+  border-color: #FB6200;
+}
+
+</style>
+
+
+</div>
+
+  <div class="content has-text-right">
+    <p>
+      Built with
+      <a href="https://golang.org/" target="_blank">Go</a>
+      /
+      <a href="https://github.com/gopherjs/gopherjs" target="_blank">GopherJS</a>
+      /
+      <a href="https://github.com/" target="_blank">GitHub</a>
+      /
+      <a href="https://bulma.io/" target="_blank">Bulma</a>
+      /
+      <a href="https://www.pwabuilder.com/" target="_blank">PWABuilder</a>
+
+
+    </p>
+  </div>
+</footer>
+
+
+  </div>
+  <div class="column is-hidden-mobile">
+    
+  </div>
+</div>
+
+
+    </div>
+  </section>
+
+  <div id="about" class="is-hidden">
+<article class="message">
+  <div class="message-header">
+    <p>About This Website</p>
+  </div>
+  <div class="message-body">
+  <p>This site is online <a href="https://en.wikipedia.org/wiki/Pali"
+     target="_blank">Pāḷi</a> Dictionary (<em>Pāli to Chinese</em>,
+     <em>Pāli to English</em>, <em>Pāli to Japanese</em>,
+     <em>Pāli-Vietnamese</em>, <em>Pāli-Burmese</em>).
+     The source of the dictionaries come from
+     <a href="http://dhamma.sutta.org/pali-course/Pali-Chinese-English%20Dictionary.html"
+     target="_blank">Pali Canon E-Dictionary Version 1.94 (PCED)</a>.
+     The source code of this website is at
+     <a href="https://github.com/siongui/paligo" target="_blank">paligo</a>
+     repository on GitHub, and the data of this website is at
+     <a href="https://github.com/siongui/data" target="_blank">data</a>
+     repository on GitHub. Any suggestion or questions? Welcome to
+     <a href="mailto:siongui@gmail.com">contact me</a>.
+  </p>
+
+<p>
+
+<strong>Offline Use of Pāli Dictionary</strong>
+<br>
+For users who do not have internet connection all the time and want to download
+and use Pāli dictionary on local machine/desktop/laptop. Offline copy of Pāli
+dictionary is available now.
+<ul>
+  <li>
+     <a href="https://siongui.gitlab.io/pali-dictionary/offline-linux">Offline Pāli Dictionary (Linux)</a>
+  </li>
+  <li>
+     <a href="https://siongui.gitlab.io/pali-dictionary/offline-windows.exe">Offline Pāli Dictionary (Windows)</a>
+  </li>
+  <li>
+     <a href="https://siongui.gitlab.io/pali-dictionary/offline-darwin">Offline Pāli Dictionary (Mac OS X)</a>
+  </li>
+  <li>
+     Offline Copy Last Updated: 2020-07-31T07:23+08:00
+  </li>
+</ul>
+There is only one binary file and the file size is several hundred MB. It may
+take a long time to download if the speed of internet connection is slow. After
+download finished, run the binary file and then open your browser at URL
+<a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a>
+You will see Pāli Dictionary running on your local machine. Note that so far the
+offline version is not fully working as the online version.
+
+</p>
+
+  <p>
+     <strong>Pāli Dictionary Mirrors:</strong>
+<ul>
+  <li>
+     <a href="https://palidictionary.appspot.com/" target="_blank">palidictionary.appspot.com</a> (obsoleted)
+  </li>
+  <li>
+     <a href="https://dictionary.sutta.org/" target="_blank">dictionary.sutta.org</a>
+  </li>
+  <li>
+     <a href="https://dictionary.online-dhamma.net/" target="_blank">dictionary.online-dhamma.net</a>
+  </li>
+
+</ul>
+  </p>
+  <p>
+     <strong>Pāli Tipiṭaka Mirrors:</strong>
+<ul>
+  <li>
+     <a href="https://epalitipitaka.appspot.com/" target="_blank">epalitipitaka.appspot.com</a>
+  </li>
+  <li>
+     <a href="http://tipitaka.sutta.org/" target="_blank">tipitaka.sutta.org</a> (Usable but not complete.)
+  </li>
+  <li>
+     <a href="http://tipitaka.online-dhamma.net/" target="_blank">tipitaka.online-dhamma.net</a>
+  </li>
+</ul>
+  </p>
+  <p>
+     <strong>Source Code Mirror:</strong>
+<ul>
+  <li>
+     <a href="https://gitlab.com/siongui/pali-dictionary" target="_blank">gitlab.com/siongui/pali-dictionary</a>
+  </li>
+</ul>
+  </p>
+  </div>
+</article>
+<article class="message">
+  <div class="message-header">
+    <p>TODO List</p>
+  </div>
+  <div class="message-body">
+  <p>
+    <ul>
+      <li>Thai/Burmese script input support</li>
+    </ul>
+  </p>
+  </div>
+</article>
+</div>
+  <span id="site-info" data-siteurl="https://dictionary.online-dhamma.net" data-locale="zh_TW"></span>
+  <script src="https://dictionary.online-dhamma.net/pali.js"></script>
+
+<script type="module">
+// https://www.pwabuilder.com/
+// This is the "Offline copy of pages" service worker
+
+/*
+
+ This code uses the pwa-update web component https://github.com/pwa-builder/pwa-update to register your service worker,
+
+ tell the user when there is an update available and let the user know when your PWA is ready to use offline.
+
+*/
+import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+const el = document.createElement('pwa-update');
+
+document.body.appendChild(el);
+
+</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-32179549-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-32179549-1');
+</script>
+
+</body>
+</html>
